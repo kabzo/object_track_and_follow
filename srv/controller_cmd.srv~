@@ -1,0 +1,4 @@
+string str
+int16 mode
+---
+int16 res

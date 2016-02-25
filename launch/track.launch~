@@ -1,0 +1,12 @@
+<launch>  
+
+	<arg name="image_topic" default="ardrone/front/image_raw"/>
+
+	#<node name="object_follow_controller" pkg="object_follow" type="object_follow_controller">
+	#	<remap from="image_raw" to="$(arg image_topic)"/>
+  	#</node>	
+
+ 	<node name="object_follow_gui" pkg="object_follow" type="object_follow_gui">
+		<remap from="image_raw" to="$(arg image_topic)"/>
+  	</node>	
+</launch>

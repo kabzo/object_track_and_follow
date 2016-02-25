@@ -1,0 +1,8 @@
+<launch>
+	<arg name="image_topic" default="ardrone/front/image_raw"/>
+
+ 	<node name="object_follow_gui" pkg="object_follow" type="object_follow_gui" output="screen">
+		<param name="image_transport" value="compressed" type="string"/>
+		<param name="image" value="$(arg image_topic)" type="string"/>
+  	</node>	
+</launch>

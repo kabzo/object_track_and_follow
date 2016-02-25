@@ -1,0 +1,47 @@
+# Forearm camera configuration
+
+PACKAGE='object_follow'
+import roslib; roslib.load_manifest(PACKAGE)
+
+from math import pi
+
+from driver_base.msg import SensorLevels
+from dynamic_reconfigure.parameter_generator import *
+
+gen = ParameterGenerator()
+angles = gen.add_group("Angles")
+#       Name                    Type      Reconfiguration level
+#       Description
+#       Default  Min  Max
+angles.add("min_ang",           double_t, SensorLevels.RECONFIGURE_STOP,
+           "The angle of the first range measurement. The unit depends on ~ang_radians.",
+           -pi/2,-pi, pi)
+angles.add("max_ang",           double_t, SensorLevels.RECONFIGURE_STOP,
+           "The angle of the first range measurement. The unit depends on ~ang_radians.",
+            pi/2, -pi, pi)
+gen.add("intensity",            bool_t,   SensorLevels.RECONFIGURE_STOP,
+        "Whether or not the hokuyo returns intensity values.",
+         False)
+gen.add("cluster",              int_t,    SensorLevels.RECONFIGURE_STOP,
+        "The number of adjacent range measurements to cluster into a single reading",
+         1, 0, 99)
+gen.add("skip",                 int_t,    SensorLevels.RECONFIGURE_STOP,
+        "The number of scans to skip between each measured scan",
+         0, 0,  9)
+gen.add("port",                 str_t,    SensorLevels.RECONFIGURE_CLOSE,
+        "The serial port where the hokuyo device can be found",
+        "/dev/ttyACM0")
+gen.add("calibrate_time",       bool_t,   SensorLevels.RECONFIGURE_CLOSE,
+        "Whether the node should calibrate the hokuyo's time offset",
+         True)
+gen.add("frame_id",             str_t,    SensorLevels.RECONFIGURE_RUNNING,
+        "The frame in which laser scans will be returned",
+        "laser")
+gen.add("time_offset",          double_t, SensorLevels.RECONFIGURE_RUNNING,
+        "An offet to add to the timestamp before publication of a scan",
+         0, -0.25, 0.25)
+gen.add("allow_unsafe_settings",bool_t,   SensorLevels.RECONFIGURE_CLOSE,
+        "Turn this on if you wish to use the UTM-30LX with an unsafe angular range. Turning this option on may cause occasional crashes or bad data. This option is a tempory workaround that will hopefully be removed in an upcoming driver version.",
+         False)
+
+exit(gen.generate(PACKAGE, "dynamic_reconfigure_node", "pid"))

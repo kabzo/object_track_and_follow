@@ -1,0 +1,31 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~enable_ekf_prediction" : \b [bool] ekf_prediction min: False, default: True, max: True
+- \b "~enable_ekf_data_association" : \b [bool] ekf_data_association min: False, default: False, max: True
+- \b "~enable_ekf_update" : \b [bool] ekf_update min: False, default: False, max: True
+- \b "~init_sigma_location" : \b [double] init_sigma_location min: 0.0, default: 5.0, max: 20.0
+- \b "~init_sigma_orientation" : \b [double] init_sigma_orientation min: 0.0, default: 0.39, max: 3.14
+- \b "~motion_noise_0" : \b [double] motion_noise 0 min: 0.0, default: 0.1, max: 0.5
+- \b "~motion_noise_1" : \b [double] motion_noise 1 min: 0.0, default: 0.01, max: 0.5
+- \b "~motion_noise_2" : \b [double] motion_noise 2 min: 0.0, default: 0.01, max: 0.5
+- \b "~motion_noise_3" : \b [double] motion_noise 3 min: 0.0, default: 0.01, max: 0.5
+- \b "~hough_space_pixel_rho" : \b [double] hough_space_size_rho min: 0.0, default: 500.0, max: 1000.0
+- \b "~hough_space_pixel_theta" : \b [double] hough_space_size_theta min: 0.0, default: 400.0, max: 1000.0
+- \b "~hough_space_meter_rho" : \b [double] hough_space_resolution_rho min: 0.0, default: 5.0, max: 50.0
+- \b "~hough_space_line_threshold" : \b [double] hough_space_line_threshold min: 0.0, default: 30.0, max: 200.0
+- \b "~line_sigma_rho" : \b [double] line_sigma_rho min: 0.0, default: 0.5, max: 200.0
+- \b "~line_sigma_theta" : \b [double] line_sigma_theta min: 0.0, default: 0.1, max: 200.0
+- \b "~enviroment_meter_width" : \b [double] enviroment_meter_width 0 min: 1.0, default: 16.0, max: 50.0
+- \b "~enviroment_meter_height" : \b [double] enviroment_meter_height 1 min: 1.0, default: 16.0, max: 50.0
+- \b "~map_pixel_width" : \b [double] map_pixel_width 2 min: 0.0, default: 500.0, max: 1000.0
+- \b "~map_pixel_height" : \b [double] map_pixel_height 3 min: 0.0, default: 500.0, max: 1000.0
+- \b "~map_meter_width" : \b [double] map_meter_width 2 min: 0.0, default: 18.0, max: 50.0
+- \b "~map_meter_height" : \b [double] map_meter_height 3 min: 0.0, default: 18.0, max: 50.0
+- \b "~robot_view_pixel_width" : \b [double] robot_view_pixel_width 2 min: 0.0, default: 500.0, max: 1000.0
+- \b "~robot_view_pixel_height" : \b [double] robot_view_pixel_height 3 min: 0.0, default: 500.0, max: 1000.0
+- \b "~robot_view_meter_width" : \b [double] robot_view_meter_width 2 min: 0.0, default: 10.0, max: 50.0
+- \b "~robot_view_meter_height" : \b [double] robot_view_meter_height 3 min: 0.0, default: 10.0, max: 50.0
+- \b "~robot_view_angle" : \b [double] robot_view_angle 3 min: -3.15, default: 0.0, max: 3.15
+

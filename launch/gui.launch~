@@ -1,0 +1,8 @@
+<launch>
+	<arg name="image_topic" default="usb_cam/image_raw"/>
+
+ 	<node name="gui_tracking_control" pkg="object_follow" type="gui_tracking_control" output="screen">
+		<param name="image_transport" value="raw" type="string"/>
+		<param name="image" value="$(arg image_topic)" type="string"/>
+  	</node>	
+</launch>

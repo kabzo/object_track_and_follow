@@ -1,0 +1,32 @@
+\subsubsection usage Usage
+\verbatim
+<node name="object_follow" pkg="object_follow" type="object_follow">
+  <param name="enable_ekf_prediction" type="bool" value="True" />
+  <param name="enable_ekf_data_association" type="bool" value="False" />
+  <param name="enable_ekf_update" type="bool" value="False" />
+  <param name="init_sigma_location" type="double" value="5.0" />
+  <param name="init_sigma_orientation" type="double" value="0.39" />
+  <param name="motion_noise_0" type="double" value="0.1" />
+  <param name="motion_noise_1" type="double" value="0.01" />
+  <param name="motion_noise_2" type="double" value="0.01" />
+  <param name="motion_noise_3" type="double" value="0.01" />
+  <param name="hough_space_pixel_rho" type="double" value="500.0" />
+  <param name="hough_space_pixel_theta" type="double" value="400.0" />
+  <param name="hough_space_meter_rho" type="double" value="5.0" />
+  <param name="hough_space_line_threshold" type="double" value="30.0" />
+  <param name="line_sigma_rho" type="double" value="0.5" />
+  <param name="line_sigma_theta" type="double" value="0.1" />
+  <param name="enviroment_meter_width" type="double" value="16.0" />
+  <param name="enviroment_meter_height" type="double" value="16.0" />
+  <param name="map_pixel_width" type="double" value="500.0" />
+  <param name="map_pixel_height" type="double" value="500.0" />
+  <param name="map_meter_width" type="double" value="18.0" />
+  <param name="map_meter_height" type="double" value="18.0" />
+  <param name="robot_view_pixel_width" type="double" value="500.0" />
+  <param name="robot_view_pixel_height" type="double" value="500.0" />
+  <param name="robot_view_meter_width" type="double" value="10.0" />
+  <param name="robot_view_meter_height" type="double" value="10.0" />
+  <param name="robot_view_angle" type="double" value="0.0" />
+</node>
+\endverbatim
+
