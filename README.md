@@ -23,3 +23,9 @@ Station
 We found the right combination of on-board computer and tracker which are suitable for
 our project. We created test-video which evaluates the trackers and another video which
 shows the final result during the flight.
+
+#Structure
+<ul>
+<li>mavlink interpreter is a helping package which translated the override RC commands in the APM</li>
+<li>object_follow is the tracking and following solution</li>
+</ul>
