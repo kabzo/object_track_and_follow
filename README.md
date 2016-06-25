@@ -29,3 +29,58 @@ shows the final result during the flight.
 <li>mavlink interpreter is a helping package which translated the override RC commands in the APM</li>
 <li>object_follow is the tracking and following solution</li>
 </ul>
+
+#Compile and run the code
+Thic code was developed under ROS Indigo. Follow ROS Webpage for Indigo [installation](http://wiki.ros.org/indigo/Installation/Ubuntu). 
+
+Create a workspace as is in ros [docummentation indicated](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
+In case you are not familiar with ROS environment, I suggest you to work through all tutorials from the ROS Webpage. Specialy launch files!
+Clone object_follow, ros_opentld, mavros, tum_simulator from git to the workspace. 
+
+```
+cd src/
+git clone https://github.com/kabzo/ros_opentld.git
+git clone https://github.com/kabzo/Object-Track-and-Follow.git
+git clone -b indigo-devel https://github.com/mavlink/mavros.git
+git clone https://github.com/dougvk/tum_simulator.git
+cd ..
+rosdep install --from-paths src --ignore-src --rosdistro indigo -y
+
+```
+In case you will not use apm controll board erase package ```mavlink_apm_interpreter```
+
+Now you need to install some additional packages
+```
+sudo apt-get install ros-indigo-ardrone-autonomy ros-indigo-control-toolbox
+```
+You might to need compile some of the packages separately:
+```
+catkin_make
+catkin_make --pkg tld_msgs
+catkin_make --pkg object_follow
+catkin_make
+```
+
+Launch tum_simulator if you dont have your own camera source
+```
+roslaunch cvg_sim_gazebo ardrone_testworld.launch
+```
+
+Now you can launch the control GUI and tracker with 
+```
+roslaunch object_follow gui.launch
+roslaunch object_follow tld_tracker.launch 
+```
+
+in respective launch files (```roscd object_follow/launch```) you can change the camera source, by default it is set for ```tum_simulator``` ardrone camera topic
+```
+<arg name="image_topic" default="ardrone/front/image_raw"/>
+```
+
+The GUI control:
+In tab1 you can choose which object to follow. By pressing ```F5``` you refresh the image and by drawing a rectangle around the object of choice you pick the bounding box. Than pres Enter to start tracking. If the drone sees the object launch the tracking by ticking the TRACKING OBJECT box. You might need to change some PID constants which you can change dynamicaly by [ROS parameter server](http://wiki.ros.org/rqt) (no need of recompilation).
+For closer information follow [http://www.kabzanj.net/file/object_follow](http://www.kabzanj.net/file/object_follow)
+
+I highly suggest to install qtcreator for development and debugging. Open is as CMake project and you are ready to go.
+
+
